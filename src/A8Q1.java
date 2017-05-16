@@ -41,15 +41,31 @@ public class A8Q1 extends JComponent {
         g.clearRect(0, 0, WIDTH, HEIGHT);
 
         // GAME DRAWING GOES HERE 
+        
+        //hair
+        g.setColor(Color.BLACK);
+        g.fillOval(275, 50, 500, 600 );
+        
+        //head of the person
        g.setColor(Peach);
        g.fillOval(275,75, 500, 600);
+       
+       //Eyes
         g.setColor(Color.WHITE);
        g.fillOval(375, 250, 100, 60); 
        g.fillOval(575, 250, 100, 60);
        
+       //Pupils
        g.setColor(Brown);
        g.fillOval(400, 253, 50, 55);
        g.fillOval(600, 253, 50, 55);
+       
+       //eyebrows
+       g.fillRect(375, 215, 100, 35);
+       
+       //mouth
+      
+        g.drawArc(200, 500, 500, 0, 45, 50);
         
         // GAME DRAWING ENDS HERE
     }
