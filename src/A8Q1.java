@@ -1,5 +1,4 @@
 
-
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JComponent;
@@ -19,19 +18,15 @@ public class A8Q1 extends JComponent {
     // Height and Width of our game
     static final int WIDTH = 1000;
     static final int HEIGHT = 800;
-
     // sets the framerate and delay for our game
     // you just need to select an approproate framerate
     long desiredFPS = 60;
     long desiredTime = (1000) / desiredFPS;
-
-
     // GAME VARIABLES WOULD GO HERE
-     Color Peach = new Color(212,195,140);
-     Color Brown = new Color(66, 55, 20);
+    Color Peach = new Color(212, 195, 140);
+    Color Brown = new Color(66, 55, 20);
 
     // GAME VARIABLES END HERE   
-
     // drawing of the game happens in here
     // we use the Graphics object, g, to perform the drawing
     // NOTE: This is already double buffered!(helps with framerate/speed)
@@ -41,41 +36,58 @@ public class A8Q1 extends JComponent {
         g.clearRect(0, 0, WIDTH, HEIGHT);
 
         // GAME DRAWING GOES HERE 
-        
+
         //hair
-        g.setColor(Color.BLACK);
-        g.fillOval(275, 50, 500, 600 );
-        
+
+
+
         //head of the person
-       g.setColor(Peach);
-       g.fillOval(275,75, 500, 600);
-       
-       //Eyes
+        g.setColor(Peach);
+        g.fillOval(275, 75, 500, 600);
+
+        //Eyes
         g.setColor(Color.WHITE);
-       g.fillOval(375, 250, 100, 60); 
-       g.fillOval(575, 250, 100, 60);
-       
-       //Pupils
-       g.setColor(Brown);
-       g.fillOval(400, 253, 50, 55);
-       g.fillOval(600, 253, 50, 55);
-       
-       //eyebrows
-       g.fillRect(375, 215, 100, 35);
-       
-       //mouth
-      
-        g.drawArc(200, 500, 500, 0, 45, 50);
+        g.fillOval(375, 250, 100, 60);
+        g.fillOval(575, 250, 100, 60);
+
+        //Pupils
+        g.setColor(Brown);
+        g.fillOval(400, 253, 50, 55);
+        g.fillOval(600, 253, 50, 55);
+
+//        g.setColor(Color.BLACK);
+        g.fillOval(415, 270, 20, 20);
+        g.fillOval(615, 270, 20, 20);
+
+        //eyebrows
+        g.setColor(Color.BLACK);
+        g.fillOval(375, 227, 100, 20);
+        g.fillOval(575, 227, 100, 20);
+
+        //hair
+        g.fillOval(325, 75, 400, 100);
+
+//        g.fillArc(300, 100, 200, 100, 180, 180);
+//        g.fillArc(400, 40, 300, 175, 180, 180);
+
+
+        //mouth
+        g.setColor(Brown);
+        g.fillOval(425, 500, 200, 60);
+
+        //teeth 
+        g.setColor(Color.WHITE);
+        g.fillRect(503, 500, 20, 20);
+        g.fillRect(524, 500, 20, 20);
         
+
         // GAME DRAWING ENDS HERE
     }
 
-
     // This method is used to do any pre-setup you might need to do
     // This is run before the game loop begins!
-    public void  preSetup(){
-       // Any of your pre setup before the loop starts should go here
-
+    public void preSetup() {
+        // Any of your pre setup before the loop starts should go here
     }
 
     // The main game loop
@@ -137,11 +149,11 @@ public class A8Q1 extends JComponent {
         frame.pack();
         // shows the window to the user
         frame.setVisible(true);
-        
+
         // add listeners for keyboard and mouse
         frame.addKeyListener(new Keyboard());
         game.addMouseListener(new Mouse());
-        
+
         // starts the game loop
         game.run();
     }
@@ -149,37 +161,33 @@ public class A8Q1 extends JComponent {
     // Used to implement any of the Mouse Actions
     private static class Mouse extends MouseAdapter {
         // if a mouse button has been pressed down
+
         @Override
-        public void mousePressed(MouseEvent e){
-            
+        public void mousePressed(MouseEvent e) {
         }
-        
+
         // if a mouse button has been released
         @Override
-        public void mouseReleased(MouseEvent e){
-            
+        public void mouseReleased(MouseEvent e) {
         }
-        
+
         // if the mouse has moved positions
         @Override
-        public void mouseMoved(MouseEvent e){
-            
+        public void mouseMoved(MouseEvent e) {
         }
     }
-    
+
     // Used to implements any of the Keyboard Actions
-    private static class Keyboard extends KeyAdapter{
+    private static class Keyboard extends KeyAdapter {
         // if a key has been pressed down
+
         @Override
-        public void keyPressed(KeyEvent e){
-            
+        public void keyPressed(KeyEvent e) {
         }
-        
+
         // if a key has been released
         @Override
-        public void keyReleased(KeyEvent e){
-            
+        public void keyReleased(KeyEvent e) {
         }
     }
 }
-
