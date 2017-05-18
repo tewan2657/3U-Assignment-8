@@ -25,6 +25,10 @@ public class A8Q1 extends JComponent {
     // GAME VARIABLES WOULD GO HERE
     Color Peach = new Color(212, 195, 140);
     Color Brown = new Color(66, 55, 20);
+    
+    int eyebrowLeft = 227;
+    int eyebrowDirection = 1;
+    
 
     // GAME VARIABLES END HERE   
     // drawing of the game happens in here
@@ -54,14 +58,14 @@ public class A8Q1 extends JComponent {
         g.setColor(Brown);
         g.fillOval(400, 253, 50, 55);
         g.fillOval(600, 253, 50, 55);
-
-//        g.setColor(Color.BLACK);
+          
+        g.setColor(Color.BLACK);
         g.fillOval(415, 270, 20, 20);
         g.fillOval(615, 270, 20, 20);
 
         //eyebrows
         g.setColor(Color.BLACK);
-        g.fillOval(375, 227, 100, 20);
+        g.fillOval(375,eyebrowLeft, 100, 20);
         g.fillOval(575, 227, 100, 20);
 
         //hair
@@ -108,7 +112,29 @@ public class A8Q1 extends JComponent {
             startTime = System.currentTimeMillis();
 
             // all your game rules and move is done in here
-            // GAME LOGIC STARTS HERE 
+            // GAME LOGIC STARTS HERE
+//            
+//            if(eyebrowLeft <= 175){
+//                eyebrowDirection = 10;
+//            }
+//            else if(){
+//            
+//                eyebrowDirection = -1;
+//            }
+//          
+//           eyebrowLeft = eyebrowLeft + eyebrowDirection;
+
+            
+            if(eyebrowLeft > HEIGHT - 573){
+                eyebrowDirection = -1;
+            }
+            
+            if(eyebrowLeft <= 277){
+                eyebrowDirection = 1;
+                
+            }
+            eyebrowLeft = eyebrowLeft + eyebrowDirection*1;
+            
             // GAME LOGIC ENDS HERE 
             // update the drawing (calls paintComponent)
             repaint();
