@@ -22,13 +22,29 @@ public class A8Q1 extends JComponent {
     // you just need to select an approproate framerate
     long desiredFPS = 60;
     long desiredTime = (1000) / desiredFPS;
+    
     // GAME VARIABLES WOULD GO HERE
+    //Colors
     Color Peach = new Color(212, 195, 140);
     Color Brown = new Color(66, 55, 20);
     
+    //eyebrows animation 
     int eyebrowLeft = 227;
     int eyebrowDirection = 1;
     
+    int eyebrowRight = 227;
+    int eyebrowD2 = 1;
+    
+    
+    //pupil animation x-axis
+    int pupilLeft = 400;
+    int pupilD1 = 1;
+    
+    
+    
+   boolean reached = false;
+
+ 
 
     // GAME VARIABLES END HERE   
     // drawing of the game happens in here
@@ -56,7 +72,7 @@ public class A8Q1 extends JComponent {
 
         //Pupils
         g.setColor(Brown);
-        g.fillOval(400, 253, 50, 55);
+        g.fillOval(pupilLeft, 253, 50, 55);
         g.fillOval(600, 253, 50, 55);
           
         g.setColor(Color.BLACK);
@@ -66,13 +82,11 @@ public class A8Q1 extends JComponent {
         //eyebrows
         g.setColor(Color.BLACK);
         g.fillOval(375,eyebrowLeft, 100, 20);
-        g.fillOval(575, 227, 100, 20);
+        g.fillOval(575, eyebrowRight, 100, 20);
 
         //hair
         g.fillOval(325, 75, 400, 100);
 
-//        g.fillArc(300, 100, 200, 100, 180, 180);
-//        g.fillArc(400, 40, 300, 175, 180, 180);
 
 
         //mouth
@@ -113,28 +127,66 @@ public class A8Q1 extends JComponent {
 
             // all your game rules and move is done in here
             // GAME LOGIC STARTS HERE
-//            
-//            if(eyebrowLeft <= 175){
-//                eyebrowDirection = 10;
-//            }
-//            else if(){
-//            
-//                eyebrowDirection = -1;
-//            }
-//          
-//           eyebrowLeft = eyebrowLeft + eyebrowDirection;
-
             
-            if(eyebrowLeft > HEIGHT - 573){
-                eyebrowDirection = -1;
+            if( pupilLeft <= 500 && reached == false){
+                pupilD1 = 1;
+            
+            if(pupilLeft == 500){
+                reached = true;
             }
+            }
+            if(pupilLeft >= 200 && reached == true){
+                pupilD1 = -1;
+                
+                if(pupilLeft == 200){
+                    reached = false;
+                }
+            }
+            pupilLeft = pupilLeft + pupilD1;
             
-            if(eyebrowLeft <= 277){
+           
+            
+            
+            
+            
+            //EyebrowLEFT
+            if(eyebrowLeft >= 200 && reached == false){
+                eyebrowDirection = -1;
+                
+                if(eyebrowLeft == 200 ){
+                    reached = true;
+                }
+            }
+             if(eyebrowLeft <= 227 && reached == true) {
+            
                 eyebrowDirection = 1;
                 
+                if(eyebrowLeft == 227 ){
+                    reached = false;
+                }
             }
-            eyebrowLeft = eyebrowLeft + eyebrowDirection*1;
+           eyebrowLeft = eyebrowLeft + eyebrowDirection;
+
+           //EyebrowRight
+           if(eyebrowRight >= 200 && reached == false){
+                eyebrowD2 = -1;
+                
+                if(eyebrowRight == 200 ){
+                    reached = true;
+                }
+            }
+             if(eyebrowRight <= 227 && reached == true) {
             
+                eyebrowD2 = 1;
+                
+                if(eyebrowRight == 227 ){
+                    reached = false;
+                }
+            }
+           eyebrowRight = eyebrowRight + eyebrowD2;
+
+            
+           
             // GAME LOGIC ENDS HERE 
             // update the drawing (calls paintComponent)
             repaint();
@@ -190,6 +242,8 @@ public class A8Q1 extends JComponent {
 
         @Override
         public void mousePressed(MouseEvent e) {
+            
+            System.out.println("X = " +  e.getX() + " Y = " + e.getY());
         }
 
         // if a mouse button has been released
