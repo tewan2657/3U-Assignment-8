@@ -25,6 +25,7 @@ public class A8Q1 extends JComponent {
     
     // GAME VARIABLES WOULD GO HERE
     //Colors
+    Color dPeach = new Color(209, 194, 131);
     Color Peach = new Color(212, 195, 140);
     Color Brown = new Color(66, 55, 20);
     
@@ -40,7 +41,22 @@ public class A8Q1 extends JComponent {
     int pupilLeft = 400;
     int pupilD1 = 1;
     
+    int pupilRight = 600;
+    int pupilD2 = 1;
     
+    //eyes animtion
+    int eyeLeft = 415;
+    int eyeD1 = 1;
+    
+    int eyeRight = 615;        
+    int eyeD2 = 1;
+    
+    //Ear animation 
+    int earLeft = 190;
+    int earD1 = 1;
+            
+    int earRight = 190;
+    int earD2  = 1;       
     
    boolean reached = false;
 
@@ -57,15 +73,17 @@ public class A8Q1 extends JComponent {
 
         // GAME DRAWING GOES HERE 
 
-        //hair
-
-
+        
+        //Ears 
+        g.setColor(dPeach);
+        g.fillOval(250, earLeft, 75, 200);
+        g.fillOval(725, earRight, 75, 200);
 
         //head of the person
         g.setColor(Peach);
         g.fillOval(275, 75, 500, 600);
 
-        //Eyes
+        //Eyeball
         g.setColor(Color.WHITE);
         g.fillOval(375, 250, 100, 60);
         g.fillOval(575, 250, 100, 60);
@@ -73,11 +91,11 @@ public class A8Q1 extends JComponent {
         //Pupils
         g.setColor(Brown);
         g.fillOval(pupilLeft, 253, 50, 55);
-        g.fillOval(600, 253, 50, 55);
+        g.fillOval(pupilRight, 253, 50, 55);
           
         g.setColor(Color.BLACK);
-        g.fillOval(415, 270, 20, 20);
-        g.fillOval(615, 270, 20, 20);
+        g.fillOval(eyeLeft, 270, 20, 20);
+        g.fillOval(eyeRight, 270, 20, 20);
 
         //eyebrows
         g.setColor(Color.BLACK);
@@ -85,7 +103,7 @@ public class A8Q1 extends JComponent {
         g.fillOval(575, eyebrowRight, 100, 20);
 
         //hair
-        g.fillOval(325, 75, 400, 100);
+        g.fillArc(325, 75, 400, 250, 0, 180);
 
 
 
@@ -98,6 +116,12 @@ public class A8Q1 extends JComponent {
         g.fillRect(503, 500, 20, 20);
         g.fillRect(524, 500, 20, 20);
         
+        //tongue 
+        g.setColor(Color.RED);
+        g.fillOval(500, 530, 50, 30);
+        
+        //lips
+       // g.fillArc(425, 520, 200, 40, 180, 180);
 
         // GAME DRAWING ENDS HERE
     }
@@ -127,7 +151,61 @@ public class A8Q1 extends JComponent {
 
             // all your game rules and move is done in here
             // GAME LOGIC STARTS HERE
+          
             
+            //eyeRight
+               if(eyeRight <= 700 && reached == false){
+                eyeD2 = 1;
+            
+            if(eyeRight == 700){
+                reached = true;
+            }
+            }
+            if(eyeRight >= 200 && reached == true){
+                eyeD2 = -1;
+                
+                if(eyeRight == 200){
+                    reached = false;
+                }
+            }
+            eyeRight = eyeRight + eyeD2;
+            
+            
+            //EyesLeft
+              if( eyeLeft <= 500 && reached == false){
+                eyeD1 = 1;
+            
+            if(eyeLeft == 500){
+                reached = true;
+            }
+            }
+            if(eyeLeft >= 200 && reached == true){
+                eyeD1 = -1;
+                
+                if(eyeLeft == 200){
+                    reached = false;
+                }
+            }
+            eyeLeft = eyeLeft + eyeD1;
+            
+            //PupilRight
+             if( pupilRight <= 700 && reached == false){
+                pupilD2 = 1;
+            
+            if(pupilRight == 700){
+                reached = true;
+            }
+            }
+            if(pupilRight >= 200 && reached == true){
+                pupilD2 = -1;
+                
+                if(pupilRight == 200){
+                    reached = false;
+                }
+            }
+            pupilRight = pupilRight + pupilD2;
+            
+            //pupilLeft
             if( pupilLeft <= 500 && reached == false){
                 pupilD1 = 1;
             
@@ -144,10 +222,7 @@ public class A8Q1 extends JComponent {
             }
             pupilLeft = pupilLeft + pupilD1;
             
-           
-            
-            
-            
+         
             
             //EyebrowLEFT
             if(eyebrowLeft >= 200 && reached == false){
@@ -184,9 +259,44 @@ public class A8Q1 extends JComponent {
                 }
             }
            eyebrowRight = eyebrowRight + eyebrowD2;
-
-            
            
+           
+           
+          //ear Left
+           if(earLeft <= 200 && reached == false){
+              earD1 = 1;
+               
+               if(earLeft == 200){
+                   reached = true;
+               }
+           }
+           if(earLeft >= 300 && reached == true){
+               earD1 = -1;
+               
+               if(earLeft == 300){
+                   reached = false;
+               }
+           }
+            earLeft = earLeft + earD1;
+            
+            //earRight
+            if(earRight <= 200 && reached == false){
+                earD2 = 1;
+                
+                if(earRight == 200){
+                    reached = true;
+                    
+                }
+            }
+            if(earRight >= 300 && reached == true){
+                earD2 = -1;
+                
+                if(earRight == 300){
+                    reached = false; 
+                }
+            }
+            earRight = earRight + earD2;
+            
             // GAME LOGIC ENDS HERE 
             // update the drawing (calls paintComponent)
             repaint();
