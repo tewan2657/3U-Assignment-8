@@ -8,6 +8,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Random;
 
 /**
  *
@@ -22,45 +23,37 @@ public class A8Q1 extends JComponent {
     // you just need to select an approproate framerate
     long desiredFPS = 60;
     long desiredTime = (1000) / desiredFPS;
-    
     // GAME VARIABLES WOULD GO HERE
     //Colors
     Color dPeach = new Color(209, 194, 131);
     Color Peach = new Color(212, 195, 140);
     Color Brown = new Color(66, 55, 20);
-    
     //eyebrows animation 
     int eyebrowLeft = 227;
     int eyebrowDirection = 1;
-    
     int eyebrowRight = 227;
     int eyebrowD2 = 1;
-    
-    
     //pupil animation x-axis
     int pupilLeft = 400;
     int pupilD1 = 1;
-    
     int pupilRight = 600;
     int pupilD2 = 1;
-    
     //eyes animtion
     int eyeLeft = 415;
     int eyeD1 = 1;
-    
-    int eyeRight = 615;        
+    int eyeRight = 615;
     int eyeD2 = 1;
-    
     //Ear animation 
     int earLeft = 190;
     int earD1 = 1;
-            
     int earRight = 190;
-    int earD2  = 1;       
+    int earD2 = 1;
     
-   boolean reached = false;
-
- 
+    //moustache animation
+    int mous = 425;
+    int mousD1 = 1;
+    
+    boolean reached = false;
 
     // GAME VARIABLES END HERE   
     // drawing of the game happens in here
@@ -69,11 +62,46 @@ public class A8Q1 extends JComponent {
     @Override
     public void paintComponent(Graphics g) {
         // always clear the screen first!
-        g.clearRect(0, 0, WIDTH, HEIGHT);
+//        Random rand = new Random();
+//        int sieze = rand.nextInt(10) + 1;
+//        switch (sieze) {
+//            case 1:
+//                g.setColor(Color.BLACK);
+//                break;
+//            case 10:
+//                g.setColor(Color.RED);
+//                break;
+//            case 2:
+//                g.setColor(Color.BLUE);
+//                break;
+//            case 3:
+//                g.setColor(Color.GREEN);
+//                break;
+//            case 4:
+//                g.setColor(Color.ORANGE);
+//                break;
+//            case 5:
+//                g.setColor(Color.MAGENTA);
+//                break;
+//            case 6:
+//                g.setColor(Color.YELLOW);
+//                break;
+//            case 7:
+//                g.setColor(Color.CYAN);
+//                break;
+//            case 8:
+//                g.setColor(Color.PINK);
+//                break;
+//            case 9:
+//                g.setColor(Color.GRAY);
+//                break;
+//            default:
+//                break;
+//        }
+//        g.fillRect(0, 0, WIDTH, HEIGHT);
 
         // GAME DRAWING GOES HERE 
 
-        
         //Ears 
         g.setColor(dPeach);
         g.fillOval(250, earLeft, 75, 200);
@@ -92,22 +120,26 @@ public class A8Q1 extends JComponent {
         g.setColor(Brown);
         g.fillOval(pupilLeft, 253, 50, 55);
         g.fillOval(pupilRight, 253, 50, 55);
-          
+
         g.setColor(Color.BLACK);
         g.fillOval(eyeLeft, 270, 20, 20);
         g.fillOval(eyeRight, 270, 20, 20);
 
         //eyebrows
         g.setColor(Color.BLACK);
-        g.fillOval(375,eyebrowLeft, 100, 20);
+        g.fillOval(375, eyebrowLeft, 100, 20);
         g.fillOval(575, eyebrowRight, 100, 20);
 
         //hair
         g.fillArc(325, 75, 400, 250, 0, 180);
 
+        //nose
+        g.drawArc(487, 250, 75, 200, 180, 180);
 
-
-        //mouth
+        //moustache
+        g.fillArc(mous, 465, 200, 20, 200, 140);
+      
+        //mouth\
         g.setColor(Brown);
         g.fillOval(425, 500, 200, 60);
 
@@ -115,13 +147,13 @@ public class A8Q1 extends JComponent {
         g.setColor(Color.WHITE);
         g.fillRect(503, 500, 20, 20);
         g.fillRect(524, 500, 20, 20);
-        
+
         //tongue 
         g.setColor(Color.RED);
-        g.fillOval(500, 530, 50, 30);
-        
+        g.fillArc(500, 545, 50, 30, 0, 180);
+
         //lips
-       // g.fillArc(425, 520, 200, 40, 180, 180);
+        // g.fillArc(425, 520, 200, 40, 180, 180);
 
         // GAME DRAWING ENDS HERE
     }
@@ -151,152 +183,168 @@ public class A8Q1 extends JComponent {
 
             // all your game rules and move is done in here
             // GAME LOGIC STARTS HERE
-          
-            
+
+
             //eyeRight
-               if(eyeRight <= 700 && reached == false){
+            if (eyeRight <= 700 && reached == false) {
                 eyeD2 = 1;
-            
-            if(eyeRight == 700){
-                reached = true;
+
+                if (eyeRight == 700) {
+                    reached = true;
+                }
             }
-            }
-            if(eyeRight >= 200 && reached == true){
+            if (eyeRight >= 200 && reached == true) {
                 eyeD2 = -1;
-                
-                if(eyeRight == 200){
+
+                if (eyeRight == 200) {
                     reached = false;
                 }
             }
             eyeRight = eyeRight + eyeD2;
-            
-            
+
+
             //EyesLeft
-              if( eyeLeft <= 500 && reached == false){
+            if (eyeLeft <= 500 && reached == false) {
                 eyeD1 = 1;
-            
-            if(eyeLeft == 500){
-                reached = true;
+
+                if (eyeLeft == 500) {
+                    reached = true;
+                }
             }
-            }
-            if(eyeLeft >= 200 && reached == true){
+            if (eyeLeft >= 200 && reached == true) {
                 eyeD1 = -1;
-                
-                if(eyeLeft == 200){
+
+                if (eyeLeft == 200) {
                     reached = false;
                 }
             }
             eyeLeft = eyeLeft + eyeD1;
-            
+
             //PupilRight
-             if( pupilRight <= 700 && reached == false){
+            if (pupilRight <= 700 && reached == false) {
                 pupilD2 = 1;
-            
-            if(pupilRight == 700){
-                reached = true;
+
+                if (pupilRight == 700) {
+                    reached = true;
+                }
             }
-            }
-            if(pupilRight >= 200 && reached == true){
+            if (pupilRight >= 200 && reached == true) {
                 pupilD2 = -1;
-                
-                if(pupilRight == 200){
+
+                if (pupilRight == 200) {
                     reached = false;
                 }
             }
             pupilRight = pupilRight + pupilD2;
-            
+
             //pupilLeft
-            if( pupilLeft <= 500 && reached == false){
+            if (pupilLeft <= 500 && reached == false) {
                 pupilD1 = 1;
-            
-            if(pupilLeft == 500){
-                reached = true;
+
+                if (pupilLeft == 500) {
+                    reached = true;
+                }
             }
-            }
-            if(pupilLeft >= 200 && reached == true){
+            if (pupilLeft >= 200 && reached == true) {
                 pupilD1 = -1;
-                
-                if(pupilLeft == 200){
+
+                if (pupilLeft == 200) {
                     reached = false;
                 }
             }
             pupilLeft = pupilLeft + pupilD1;
-            
-         
-            
-            //EyebrowLEFT
-            if(eyebrowLeft >= 200 && reached == false){
-                eyebrowDirection = -1;
-                
-                if(eyebrowLeft == 200 ){
-                    reached = true;
-                }
-            }
-             if(eyebrowLeft <= 227 && reached == true) {
-            
-                eyebrowDirection = 1;
-                
-                if(eyebrowLeft == 227 ){
-                    reached = false;
-                }
-            }
-           eyebrowLeft = eyebrowLeft + eyebrowDirection;
 
-           //EyebrowRight
-           if(eyebrowRight >= 200 && reached == false){
-                eyebrowD2 = -1;
-                
-                if(eyebrowRight == 200 ){
+
+
+            //EyebrowLEFT
+            if (eyebrowLeft >= 200 && reached == false) {
+                eyebrowDirection = -1;
+
+                if (eyebrowLeft == 200) {
                     reached = true;
                 }
             }
-             if(eyebrowRight <= 227 && reached == true) {
-            
-                eyebrowD2 = 1;
-                
-                if(eyebrowRight == 227 ){
+            if (eyebrowLeft <= 227 && reached == true) {
+
+                eyebrowDirection = 1;
+
+                if (eyebrowLeft == 227) {
                     reached = false;
                 }
             }
-           eyebrowRight = eyebrowRight + eyebrowD2;
-           
-           
-           
-          //ear Left
-           if(earLeft <= 200 && reached == false){
-              earD1 = 1;
-               
-               if(earLeft == 200){
-                   reached = true;
-               }
-           }
-           if(earLeft >= 300 && reached == true){
-               earD1 = -1;
-               
-               if(earLeft == 300){
-                   reached = false;
-               }
-           }
-            earLeft = earLeft + earD1;
-            
-            //earRight
-            if(earRight <= 200 && reached == false){
-                earD2 = 1;
-                
-                if(earRight == 200){
+            eyebrowLeft = eyebrowLeft + eyebrowDirection;
+
+            //EyebrowRight
+            if (eyebrowRight >= 200 && reached == false) {
+                eyebrowD2 = -1;
+
+                if (eyebrowRight == 200) {
                     reached = true;
-                    
                 }
             }
-            if(earRight >= 300 && reached == true){
+            if (eyebrowRight <= 227 && reached == true) {
+
+                eyebrowD2 = 1;
+
+                if (eyebrowRight == 227) {
+                    reached = false;
+                }
+            }
+            eyebrowRight = eyebrowRight + eyebrowD2;
+
+
+
+            //ear Left
+            if (earLeft <= 200 && reached == false) {
+                earD1 = 1;
+
+                if (earLeft == 200) {
+                    reached = true;
+                }
+            }
+            if (earLeft >= 300 && reached == true) {
+                earD1 = -1;
+
+                if (earLeft == 300) {
+                    reached = false;
+                }
+            }
+            earLeft = earLeft + earD1;
+
+            //earRight
+            if (earRight <= 200 && reached == false) {
+                earD2 = 1;
+
+                if (earRight == 200) {
+                    reached = true;
+
+                }
+            }
+            if (earRight >= 300 && reached == true) {
                 earD2 = -1;
-                
-                if(earRight == 300){
-                    reached = false; 
+
+                if (earRight == 300) {
+                    reached = false;
                 }
             }
             earRight = earRight + earD2;
             
+            //moustache
+            if(mous <= 450 && reached == false){
+                mousD1 = 1;
+                
+                if(mous == 450){
+                    reached = true;
+                }
+            }
+             if(mous >= 300 && reached == true ){
+                 mousD1 = -1;
+                 
+                 if(mous == 300){
+                     reached = false;
+                 }
+             }  
+            mous = mous + mousD1;
             // GAME LOGIC ENDS HERE 
             // update the drawing (calls paintComponent)
             repaint();
@@ -352,8 +400,8 @@ public class A8Q1 extends JComponent {
 
         @Override
         public void mousePressed(MouseEvent e) {
-            
-            System.out.println("X = " +  e.getX() + " Y = " + e.getY());
+
+            System.out.println("X = " + e.getX() + " Y = " + e.getY());
         }
 
         // if a mouse button has been released
