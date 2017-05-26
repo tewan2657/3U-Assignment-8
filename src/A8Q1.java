@@ -48,11 +48,9 @@ public class A8Q1 extends JComponent {
     int earD1 = 1;
     int earRight = 190;
     int earD2 = 1;
-    
     //moustache animation
     int mous = 425;
     int mousD1 = 1;
-    
     boolean reached = false;
 
     // GAME VARIABLES END HERE   
@@ -138,7 +136,7 @@ public class A8Q1 extends JComponent {
 
         //moustache
         g.fillArc(mous, 465, 200, 20, 200, 140);
-      
+
         //mouth\
         g.setColor(Brown);
         g.fillOval(425, 500, 200, 60);
@@ -328,22 +326,22 @@ public class A8Q1 extends JComponent {
                 }
             }
             earRight = earRight + earD2;
-            
+
             //moustache
-            if(mous <= 450 && reached == false){
+            if (mous <= 450 && reached == false) {
                 mousD1 = 1;
-                
-                if(mous == 450){
+
+                if (mous == 450) {
                     reached = true;
                 }
             }
-             if(mous >= 300 && reached == true ){
-                 mousD1 = -1;
-                 
-                 if(mous == 300){
-                     reached = false;
-                 }
-             }  
+            if (mous >= 300 && reached == true) {
+                mousD1 = -1;
+
+                if (mous == 300) {
+                    reached = false;
+                }
+            }
             mous = mous + mousD1;
             // GAME LOGIC ENDS HERE 
             // update the drawing (calls paintComponent)
